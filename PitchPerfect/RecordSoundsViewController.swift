@@ -19,7 +19,6 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
     
     var audioRecorder: AVAudioRecorder!
     
-    //the viewDidLoad function indicates that the "Stop Recording button" should be disactivated when appears in screen. We say override because this way we cancel the viewdidload function settled for the function by default.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,8 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
     }
 
 
-    // MARK: Record function
+// MARK: Record function
+    
     @IBAction func recordAudio(_ sender: AnyObject) {
         print("record button pressed")
         setUIState(isRecording: true)
@@ -51,7 +51,7 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
     }
 
 
-    // MARK: StopRecording function
+// MARK: StopRecording function
     @IBAction func stopRecording(_ sender: AnyObject) {
         print("stop recording button pressed")
         audioRecorder.stop()
@@ -63,10 +63,9 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
         
     }
     
-    //Another way to set the label with Ternary Operators
+    //Set the label with Ternary Operators
     
     func setUIState(isRecording:Bool){
-        // Set label, using ternary operator
         recordingLabel.text =
             isRecording ? "Recording in progress" : "Tap to Record"
         
