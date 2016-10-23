@@ -74,10 +74,7 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
         stopRecordingButton.isEnabled = isRecording
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear called")
-    }
+    // Delete empty method viewWillAppear
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("AVAudioRecorder finished saving recording")

@@ -68,18 +68,17 @@ class PlaySoundsViewController: UIViewController {
         reverbButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         stopButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
     
-        // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
+    
     }
     
+    // Add super class to the method
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI(playState: .NotPlaying)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation
