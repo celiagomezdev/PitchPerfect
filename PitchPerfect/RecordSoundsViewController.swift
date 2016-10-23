@@ -36,9 +36,7 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
     // MARK: Record function
     @IBAction func recordAudio(_ sender: AnyObject) {
         print("record button pressed")
-        recordingLabel.text = "Recording in progress"
-        stopRecordingButton.isEnabled = true
-        recordButton.isEnabled = false
+        setUIState(isRecording: true)
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
@@ -55,7 +53,21 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
         audioRecorder.prepareToRecord()
         audioRecorder.record()
     }
-     //Another way to do it with Ternary Operators
+
+
+    // MARK: StopRecording function
+    @IBAction func stopRecording(_ sender: AnyObject) {
+        print("stop recording button pressed")
+        audioRecorder.stop()
+        setUIState(isRecording: false)
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setActive(false)
+        
+        
+    }
+    
+    //Another way to set the label with Ternary Operators
     
     func setUIState(isRecording:Bool){
         // Set label, using ternary operator
@@ -65,19 +77,6 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate {
         // Set buttons
         recordButton.isEnabled = !isRecording
         stopRecordingButton.isEnabled = isRecording
-        
-    }
-
-    // MARK: StopRecording function
-    @IBAction func stopRecording(_ sender: AnyObject) {
-        print("stop recording button pressed")
-        recordButton.isEnabled = true
-        stopRecordingButton.isEnabled = false
-        recordingLabel.text = "Tap to Record"
-        audioRecorder.stop()
-        let audioSession = AVAudioSession.sharedInstance()
-        try! audioSession.setActive(false)
-        
         
     }
     
